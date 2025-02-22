@@ -10,7 +10,7 @@ const secret = Deno.env.get("SECRET")
 
 Deno.serve({port: port, hostname: "0.0.0.0"}, async(req) => {
   if(req.method == 'GET'){
-    const data = JSON.stringify(await db.getPaymentFrecuencies())
+    const data = JSON.stringify(await db.getAllBasicInfo())
     return new Response(data, {status: 200})
   }else{
     return new Response("No hiciste get")
