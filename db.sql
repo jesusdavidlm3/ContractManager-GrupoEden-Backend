@@ -1,5 +1,5 @@
-CREATE DATABASE IF NOT EXISTS contractManager_GrupoEden;
-USE contractManager_GrupoEden;
+CREATE DATABASE IF NOT EXISTS contractmanager_grupoeden;
+USE contractmanager_grupoeden;
 
 CREATE TABLE `agreements` (
   `id` int(11) NOT NULL AUTO_INCREMENT,

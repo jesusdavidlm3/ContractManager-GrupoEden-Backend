@@ -6,9 +6,9 @@ const db = mariadb.createPool({
     user: Deno.env.get("BDD_USER"),
     password: Deno.env.get("BDD_PASSWORD"),
     database: Deno.env.get("BDD_NAME"),
-    port: Deno.env.get("BDD_PORT"),
-    acquireTimeout: Deno.env.get("BDD_TIMEOUT"),
-    conexionLimit: Deno.env.get("BDD_CONECTION_LIMIT")
+    port: Number(Deno.env.get("BDD_PORT")),
+    acquireTimeout: Number(Deno.env.get("BDD_TIMEOUT")),
+    connectionLimit: Number(Deno.env.get("BDD_CONECTION_LIMIT"))
 })
 
 export async function getAllBasicInfo() {
