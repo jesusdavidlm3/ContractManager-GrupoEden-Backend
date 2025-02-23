@@ -1,18 +1,28 @@
-import mariadb  from 'npm:mariadb'
-import cors from "npm:cors"
-import jwt from "npm:jsonwebtoken"
+import cors from "cors"
+import jwt from "jsonwebtoken"
 import * as db from './dbConnections.ts'
 import "jsr:@std/dotenv/load";
 import * as t from './interfaces.ts'
+import express from 'express'
 
 const port = Deno.env.get("BACKEND_PORT")
 const secret = Deno.env.get("SECRET")
 
-Deno.serve({port: port, hostname: "0.0.0.0"}, async(req) => {
-  if(req.method == 'GET'){
-    const data = JSON.stringify(await db.getAllBasicInfo())
-    return new Response(data, {status: 200})
-  }else{
-    return new Response("No hiciste get")
+const app = express()
+app.use(cors())
+app.use(express.urlencoded({extended: true}))
+app.use(express.json())
+
+app.get("/api/getBasicInfo", async(req, res) => {
+  try{
+    const dbResponse: t.basicInfo[][] = await db.getAllBasicInfo()
+    res.status(200).send(dbResponse)
+  }catch(err){
+    console.log(err)
+    res.status(500).send("error del servidor")
   }
+})
+
+app.listen(port, () => {
+  console.log(`Puerto: ${port}`)
 })

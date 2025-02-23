@@ -1,1 +1,1 @@
-import jwt from "npm:jsonwebtoken"
+import jwt from "jsonwebtoken"
