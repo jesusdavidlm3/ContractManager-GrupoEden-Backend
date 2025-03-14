@@ -112,11 +112,12 @@ CREATE TABLE `users` (
   `password` varchar(32) NOT NULL,
   `name` varchar(50) NOT NULL,
   `lastName` varchar(50) NOT NULL,
+  `active` boolean NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 
-CREATE TABLE `contracs` (
+CREATE TABLE `contracts` (
   `id` varchar(64) NOT NULL,
   `contractNumber` varchar(15) NOT NULL DEFAULT current_timestamp(),
   `clientId` varchar(15) NOT NULL,
